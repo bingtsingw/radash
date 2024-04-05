@@ -515,7 +515,7 @@ export const debounce = <TArgs extends any[]>(
   { delay }: { delay: number },
   func: (...args: TArgs) => any
 ) => {
-  let timer: NodeJS.Timeout | undefined = undefined
+  let timer: Timer | undefined = undefined
   let active = true
 
   const debounced: DebounceFunction<TArgs> = (...args: TArgs) => {
@@ -550,7 +550,7 @@ export const throttle = <TArgs extends any[]>(
   func: (...args: TArgs) => any
 ) => {
   let ready = true
-  let timer: NodeJS.Timeout | undefined = undefined
+  let timer: Timer | undefined = undefined
 
   const throttled: ThrottledFunction<TArgs> = (...args: TArgs) => {
     if (!ready) return

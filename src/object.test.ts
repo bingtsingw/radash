@@ -112,7 +112,7 @@ describe('object module', () => {
       ]
       for (const elm of arr) {
         const newElm = _.clone(elm)
-        expect(elm).toEqual(newElm)
+        expect<typeof elm>(elm).toEqual(newElm)
       }
     })
     test('copies arrays', () => {
@@ -338,15 +338,15 @@ describe('object module', () => {
     })
     test('returns specified value or default using path', () => {
       expect(_.get({ age: undefined }, 'age', 22)).toEqual(22)
-      expect(_.get(jay, 'friends[0].age')).toEqual(17)
-      expect(_.get(jay, 'friends["0"].age')).toEqual(17)
-      expect(_.get(jay, 'friends.0.age')).toEqual(17)
+      expect(_.get<number>(jay, 'friends[0].age')).toEqual(17)
+      expect(_.get<number>(jay, 'friends["0"].age')).toEqual(17)
+      expect(_.get<number>(jay, 'friends.0.age')).toEqual(17)
       expect(_.get(jay, 'friends.1.age')).toBeUndefined()
-      expect(_.get(jay, 'friends.0.friends[0].name')).toEqual('sara')
-      expect(_.get(jay, 'name')).toEqual('jay')
-      expect(_.get(jay, '[name]')).toEqual('jay')
-      expect(_.get(jay, '["name"]')).toEqual('jay')
-      expect(_.get(jay, 'friends[0][name]')).toEqual('carl')
+      expect(_.get<string>(jay, 'friends.0.friends[0].name')).toEqual('sara')
+      expect(_.get<string>(jay, 'name')).toEqual('jay')
+      expect(_.get<string>(jay, '[name]')).toEqual('jay')
+      expect(_.get<string>(jay, '["name"]')).toEqual('jay')
+      expect(_.get<string>(jay, 'friends[0][name]')).toEqual('carl')
       expect(_.get(jay, 'friends[0].friends[0].friends[0].age', 22)).toEqual(22)
     })
   })
