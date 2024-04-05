@@ -1,30 +1,40 @@
 {
-  "name": "radash",
-  "version": "12.1.0",
-  "description": "Functional utility library - modern, simple, typed, powerful",
+  "name": "@bingtsingw/radash",
+  "version": "0.0.1",
+  "description": "Personal fork of original rayepps/radash",
   "repository": {
-    "url": "https://github.com/rayepps/radash"
+    "type": "git",
+    "url": "https://github.com/bingtsingw/radash"
   },
   "license": "MIT",
-  "author": "rayepps",
+  "author": {
+    "name": "bingtsingw",
+    "email": "bingtsingw@gmail.com",
+    "url": "https://github.com/bingtsingw"
+  },
+  "contributors": [
+    {
+      "name": "rayepps",
+      "url": "https://github.com/rayepps"
+    }
+  ],
   "sideEffects": false,
   "exports": {
     "types": "./dist/index.d.ts",
-    "import": "./dist/esm/index.mjs",
-    "require": "./dist/cjs/index.cjs"
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
   },
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/esm/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "yarn tsc --noEmit && yarn rollup -c",
-    "check": "yarn lint && yarn test && yarn build",
+    "build": "tsup",
     "commit": "cz",
+    "dev": "tsup --watch",
     "docs:build": "chiller build --ci",
-    "docs:install": "yarn && yarn add --dev next@12.3.4",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
     "lint:js": "eslint . --cache --ext .js,.jsx,.ts,.tsx",
@@ -32,6 +42,7 @@
     "mrm": "mrm --preset=@bingtsingw/mrm-preset",
     "prepare": "if [ -d './node_modules/husky' ]; then husky; fi",
     "test": "bun test",
+    "test:dev": "bun test --watch",
     "typecheck": "tsc --noEmit"
   },
   "commitlint": {
@@ -81,26 +92,37 @@
     "@bingtsingw/mrm-preset": "^0.11.1",
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@rollup/plugin-typescript": "^10.0.1",
     "@types/bun": "^1.0.12",
     "@types/node": "^20.12.4",
     "chiller": "^1.0.0-rc.30",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "esbuild": "^0.16.3",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "mrm": "^4.1.22",
-    "rollup": "^3.2.5",
-    "rollup-plugin-dts": "^5.0.0",
-    "rollup-plugin-esbuild": "^5.0.0",
-    "rollup-plugin-node-externals": "^5.0.2",
-    "tslint": "^6.0.0",
+    "tsup": "^8.0.2",
     "typescript": "^5.4.4",
     "xstools-dev": "^0.0.4"
   },
   "engines": {
     "node": ">=20.10.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "dts": true,
+    "treeshake": true,
+    "clean": true,
+    "minify": true
   }
 }
