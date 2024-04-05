@@ -41,6 +41,7 @@
     "lint:js:fix": "eslint . --cache --ext .js,.jsx,.ts,.tsx --fix",
     "mrm": "mrm --preset=@bingtsingw/mrm-preset",
     "prepare": "if [ -d './node_modules/husky' ]; then husky; fi",
+    "release": "release-it",
     "test": "bun test",
     "test:dev": "bun test --watch",
     "typecheck": "tsc --noEmit"
@@ -92,6 +93,7 @@
     "@bingtsingw/mrm-preset": "^0.11.1",
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@types/bun": "^1.0.12",
     "@types/node": "^20.12.4",
     "chiller": "^1.0.0-rc.30",
@@ -101,6 +103,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "mrm": "^4.1.22",
+    "release-it": "^17.1.1",
     "tsup": "^8.0.2",
     "typescript": "^5.4.4",
     "xstools-dev": "^0.0.4"
