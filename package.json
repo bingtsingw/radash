@@ -2,48 +2,78 @@
   "name": "radash",
   "version": "12.1.0",
   "description": "Functional utility library - modern, simple, typed, powerful",
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/esm/index.mjs",
-  "types": "dist/index.d.ts",
+  "repository": {
+    "url": "https://github.com/rayepps/radash"
+  },
+  "license": "MIT",
+  "author": "rayepps",
+  "sideEffects": false,
   "exports": {
     "types": "./dist/index.d.ts",
     "import": "./dist/esm/index.mjs",
     "require": "./dist/cjs/index.cjs"
   },
-  "sideEffects": false,
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "repository": {
-    "url": "https://github.com/rayepps/radash"
-  },
-  "author": "rayepps",
-  "private": false,
-  "license": "MIT",
   "scripts": {
-    "test": "bun test",
-    "check": "yarn lint && yarn test && yarn build",
     "build": "yarn tsc --noEmit && yarn rollup -c",
-    "docs:install": "yarn && yarn add --dev next@12.3.4",
+    "check": "yarn lint && yarn test && yarn build",
+    "commit": "cz",
     "docs:build": "chiller build --ci",
-    "lint": "tslint -p tsconfig.json",
-    "typecheck": "tsc --noEmit",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.ts\" --ignore-unknown"
+    "docs:install": "yarn && yarn add --dev next@12.3.4",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "lint:js": "eslint . --cache --ext .js,.jsx,.ts,.tsx",
+    "lint:js:fix": "eslint . --cache --ext .js,.jsx,.ts,.tsx --fix",
+    "mrm": "mrm --preset=@bingtsingw/mrm-preset",
+    "prepare": "if [ -d './node_modules/husky' ]; then husky; fi",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,html,css,md,json}": "prettier --check",
+    "**/*.{js,jsx,ts,tsx}": "eslint"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "prettier": "@xstools-dev/prettier-config/base",
+  "eslintConfig": {
+    "extends": "@xstools-dev/eslint-config/base"
   },
   "devDependencies": {
+    "@bingtsingw/mrm-preset": "^0.11.1",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
     "@rollup/plugin-typescript": "^10.0.1",
     "@types/bun": "^1.0.12",
+    "@types/node": "^20.12.4",
     "chiller": "^1.0.0-rc.30",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.16.3",
-    "prettier": "^2.7.1",
-    "prettier-plugin-organize-imports": "^3.0.3",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "mrm": "^4.1.22",
     "rollup": "^3.2.5",
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-node-externals": "^5.0.2",
     "tslint": "^6.0.0",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "xstools-dev": "^0.0.4"
   },
   "engines": {
     "node": ">=20.10.0"
