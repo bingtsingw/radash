@@ -27,33 +27,12 @@ export {
   toggle,
   unique,
   zip,
-  zipToObject
-} from './array'
-export {
-  all,
-  defer,
-  guard,
-  map,
-  parallel,
-  reduce,
-  retry,
-  sleep,
-  tryit as try,
-  tryit
-} from './async'
-export type { AggregateError } from './async'
-export {
-  callable,
-  chain,
-  compose,
-  debounce,
-  memo,
-  partial,
-  partob,
-  proxied,
-  throttle
-} from './curry'
-export { inRange, toFloat, toInt } from './number'
+  zipToObject,
+} from './array';
+export { all, defer, guard, map, parallel, reduce, retry, sleep, tryit as try, tryit } from './async';
+export type { AggregateError } from './async';
+export { callable, chain, compose, debounce, memo, partial, partob, proxied, throttle } from './curry';
+export { inRange, toFloat, toInt } from './number';
 export {
   assign,
   clone,
@@ -71,20 +50,11 @@ export {
   pick,
   set,
   shake,
-  upperize
-} from './object'
-export { draw, random, shuffle, uid } from './random'
-export { series } from './series'
-export {
-  camel,
-  capitalize,
-  dash,
-  pascal,
-  snake,
-  template,
-  title,
-  trim
-} from './string'
+  upperize,
+} from './object';
+export { draw, random, shuffle, uid } from './random';
+export { series } from './series';
+export { camel, capitalize, dash, pascal, snake, template, title, trim } from './string';
 export {
   isArray,
   isDate,
@@ -98,5 +68,5 @@ export {
   isPrimitive,
   isPromise,
   isString,
-  isSymbol
-} from './typed'
+  isSymbol,
+} from './typed';

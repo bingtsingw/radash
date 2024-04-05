@@ -50,7 +50,32 @@
   },
   "prettier": "@xstools-dev/prettier-config/base",
   "eslintConfig": {
-    "extends": "@xstools-dev/eslint-config/base"
+    "extends": "@xstools-dev/eslint-config/base",
+    "rules": {
+      "@typescript-eslint/consistent-type-assertions": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "args": "all",
+          "argsIgnorePattern": "^_",
+          "caughtErrors": "all",
+          "caughtErrorsIgnorePattern": "^_"
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.ts",
+          "**/*.test.js",
+          "**/*.spec.ts",
+          "**/*.spec.js"
+        ],
+        "rules": {
+          "max-nested-callbacks": "off"
+        }
+      }
+    ]
   },
   "devDependencies": {
     "@bingtsingw/mrm-preset": "^0.11.1",
