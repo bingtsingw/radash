@@ -21,13 +21,14 @@ Scan through the [existing issues](https://github.com/rayepps/radash/issues) to 
 - To get started, run `yarn` in the project's root directory to install the dependencies.
 - You can run the unit tests with `yarn test`. They require Node v16+. You can run `nvm use` in the root directory to change to the correct Node version. The tests should pass (duh) and maintain 100% code coverage.
 - To get familiar with the existing code I would recommend looking through the docs and the codebase in parallel. For each function in the docs, find the implementation in the source and skim over the code.
-- When coding, try not to create internal APIs (any function or module that is not exported to be used by the client). 
+- When coding, try not to create internal APIs (any function or module that is not exported to be used by the client).
 - Also, try not to use functions from other radash modules. This is a softer rule but we want to make it easy for readers to understand a function without having to navigate the codebase. As a utility library users should ideally be able to copy/paste a function from radash into their project. Most radash functions should be easy to write in isolation.
 - If an implementation needs more than ~20 lines of code it might be better suited for another package or library. This is another softer rule.
 
 ## You're ready to push a change?
 
 Once you've made your changes on a fork of the radash repo, create a pull request to the `master` branch of the [radash](https://github.com/rayepps/radash) repository.
+
 - Be sure to fill in a description that lets readers and reviewers understand both the implementation and intent of your changes.
 - Don't forget to [link the PR to an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) if you are solving one.
 - Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge.

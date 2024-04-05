@@ -9,14 +9,14 @@ group: Object
 Convert all keys in an object to upper case.
 
 ```ts
-import { upperize } from 'radash'
+import { upperize } from 'radash';
 
 const ra = {
   Mode: 'god',
-  Power: 'sun'
-}
+  Power: 'sun',
+};
 
-upperize(ra) // => { MODE, POWER }
+upperize(ra); // => { MODE, POWER }
 ```
 
 The `_.upperize` function is a shortcut for `_.mapKeys(obj, k => k.toUpperCase())`

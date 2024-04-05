@@ -4,30 +4,24 @@ group: 'Async'
 description: Reduce an array with an async function
 ---
 
-
-
-
 ## Basic usage
 
 A reduce that handles callback functions that return a promise.
 
 ```ts
-import { reduce } from 'radash'
+import { reduce } from 'radash';
 
-const userIds = [1, 2, 3, 4]
+const userIds = [1, 2, 3, 4];
 
-const users = await reduce(userIds, async (acc, userId) => {
-  const user = await api.users.find(userId)
-  return {
-    ...acc,
-    [userId]: user
-  }
-}, {})
+const users = await reduce(
+  userIds,
+  async (acc, userId) => {
+    const user = await api.users.find(userId);
+    return {
+      ...acc,
+      [userId]: user,
+    };
+  },
+  {},
+);
 ```
-
-
-
-
-
-
-

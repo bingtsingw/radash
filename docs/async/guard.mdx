@@ -9,12 +9,12 @@ description: Have a function return undefined if it errors out
 This lets you set a default value if an async function errors out.
 
 ```ts
-const users = (await guard(fetchUsers)) ?? []
+const users = (await guard(fetchUsers)) ?? [];
 ```
 
 You can choose to guard only specific errors too
 
 ```ts
-const isInvalidUserError = (err: any) => err.code === 'INVALID_ID'
-const user = (await guard(fetchUser, isInvalidUserError)) ?? DEFAULT_USER
+const isInvalidUserError = (err: any) => err.code === 'INVALID_ID';
+const user = (await guard(fetchUser, isInvalidUserError)) ?? DEFAULT_USER;
 ```

@@ -4,15 +4,12 @@ description: Convert an object to a list
 group: Object
 ---
 
-
-
-
 ## Basic usage
 
 Given an object and a mapping function, return an array with an item for each entry in the object.
 
 ```ts
-import { listify } from 'radash'
+import { listify } from 'radash';
 
 const fish = {
   marlin: {
@@ -20,15 +17,8 @@ const fish = {
   },
   bass: {
     weight: 8,
-  }
-}
+  },
+};
 
-listify(fish, (key, value) => ({ ...value, name: key })) // => [{ name: 'marlin', weight: 105 }, { name: 'bass', weight: 8 }]
+listify(fish, (key, value) => ({ ...value, name: key })); // => [{ name: 'marlin', weight: 105 }, { name: 'bass', weight: 8 }]
 ```
-
-
-
-
-
-
-

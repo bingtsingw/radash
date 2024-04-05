@@ -6,26 +6,21 @@ description: Create a debounced callback function
 
 ## Basic usage
 
-Debounce accepts an options object with a `delay` and a source function to call
-when invoked. When the returned function is invoked it will only call the source
-function after the `delay` milliseconds of time has passed. Calls that don't result
-in invoking the source reset the delay, pushing off the next invocation.
+Debounce accepts an options object with a `delay` and a source function to call when invoked. When the returned function is invoked it will only call the source function after the `delay` milliseconds of time has passed. Calls that don't result in invoking the source reset the delay, pushing off the next invocation.
 
 ```ts
-import { debounce } from 'radash'
+import { debounce } from 'radash';
 
 const makeSearchRequest = (event) => {
-  api.movies.search(event.target.value)
-}
+  api.movies.search(event.target.value);
+};
 
-input.addEventListener('change', debounce({ delay: 100 }, makeSearchRequest))
+input.addEventListener('change', debounce({ delay: 100 }, makeSearchRequest));
 ```
 
 ## Timing
 
-A visual of the debounce behavior when `delay` is `100`. The debounce function
-returned by `debounce` can be called every millisecond but it will only call
-the given callback after `delay` milliseconds have passed.
+A visual of the debounce behavior when `delay` is `100`. The debounce function returned by `debounce` can be called every millisecond but it will only call the given callback after `delay` milliseconds have passed.
 
 ```sh
                 Time: 0ms - - - - 100ms - - - - 200ms - - - - 300ms - - - - 400ms - - - -
@@ -38,11 +33,11 @@ debounce Invocations: x x x x - - - - - - - - x x x x x x x x x x - - - - - - - 
 The function returned by `debounce` has a `cancel` method that when called will permanently stop the source function from being debounced.
 
 ```ts
-const debounced = debounce({ delay: 100 }, api.feed.refresh)
+const debounced = debounce({ delay: 100 }, api.feed.refresh);
 
 // ... sometime later
 
-debounced.cancel()
+debounced.cancel();
 ```
 
 ### Flush
@@ -50,11 +45,11 @@ debounced.cancel()
 The function returned by `debounce` has a `flush` method that when called will directly invoke the source function.
 
 ```ts
-const debounced = debounce({ delay: 100 }, api.feed.refresh)
+const debounced = debounce({ delay: 100 }, api.feed.refresh);
 
 // ... sometime later
 
-debounced.flush(event)
+debounced.flush(event);
 ```
 
 ### isPending
@@ -62,10 +57,9 @@ debounced.flush(event)
 The function returned by `debounce` has a `isPending` method that when called will return if there is any pending invocation the source function.
 
 ```ts
-const debounced = debounce({ delay: 100 }, api.feed.refresh)
+const debounced = debounce({ delay: 100 }, api.feed.refresh);
 
 // ... sometime later
 
-debounced.isPending()
+debounced.isPending();
 ```
-

@@ -4,32 +4,23 @@ group: 'Curry'
 description: Create a throttled callback function
 ---
 
-
-
-
 ## Basic usage
 
-Throttle accepts an options object with an `interval` and a source function to call
-when invoked. When the returned function is invoked it will only call the source
-function if the `interval` milliseconds of time has passed. Otherwise, it will ignore
-the invocation.
-
+Throttle accepts an options object with an `interval` and a source function to call when invoked. When the returned function is invoked it will only call the source function if the `interval` milliseconds of time has passed. Otherwise, it will ignore the invocation.
 
 ```ts
-import { throttle } from 'radash'
+import { throttle } from 'radash';
 
 const onMouseMove = () => {
-  rerender()
-}
+  rerender();
+};
 
-addEventListener('mousemove', throttle({ interval: 200 }, onMouseMove))
+addEventListener('mousemove', throttle({ interval: 200 }, onMouseMove));
 ```
 
 ## Timing
 
-A visual of the throttle behavior when `interval` is `200`. The throttle function
-returned by `throttle` can be called every millisecond but it will only call
-the given callback after `interval` milliseconds have passed.
+A visual of the throttle behavior when `interval` is `200`. The throttle function returned by `throttle` can be called every millisecond but it will only call the given callback after `interval` milliseconds have passed.
 
 ```sh
                 Time: 0ms - - - - 100ms - - - - 200ms - - - - 300ms - - - - 400ms - - - -
@@ -42,9 +33,9 @@ Throttle Invocations: x x x x x x x x x x x x x x x x x x x x x x x x x x x x x 
 The function returned by `throttle` has a `isThrottled` method that when called will return if there is any active throttle.
 
 ```ts
-const debounced = throttle({ interval: 200 }, onMouseMove)
+const debounced = throttle({ interval: 200 }, onMouseMove);
 
 // ... sometime later
 
-debounced.isThrottled()
+debounced.isThrottled();
 ```
